@@ -1,0 +1,65 @@
+@import '../../../styles/theme';
+
+.cb {
+  position: relative;
+
+  &.no-line-numbers {
+    .cb-content {
+      padding: 0 0 0 0.75rem;
+    }
+  }
+}
+
+.cb-header {
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  min-height: 20px;
+  padding: 0.75rem 1rem;
+}
+
+.cb-copy-button {
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  z-index: 10;
+}
+
+.cb-content {
+  background-color: #fff;
+  border: solid 1px #efefef;
+  border-radius: 0 0 5px 5px;
+  border-top: none;
+  position: relative;
+}
+
+@include each-themes using ($name, $theme) {
+  :host {
+    .cb-header {
+      background-color: get($name, 'background');
+    }
+
+    .cb-content {
+      background-color: get($name, 'secondary-background');
+      border-color: get($name, 'divider');
+    }
+
+    ::ng-deep {
+      .CodeMirror {
+        background-color: transparent !important;
+      }
+    }
+  }
+}
+
+/* overwrite codemirror styles */
+::ng-deep {
+  .CodeMirror,
+  .CodeMirror pre.CodeMirror-line,
+  .CodeMirror pre.CodeMirror-line-like {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .CodeMirror-gutters {
+    border-color: #efefef;
+  }
+}

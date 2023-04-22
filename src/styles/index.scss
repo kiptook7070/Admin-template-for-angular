@@ -1,0 +1,52 @@
+@use '@angular/material' as mat;
+
+@import '~driver.js/dist/driver.min.css';
+
+// codemirror
+@import '~codemirror/lib/codemirror';
+@import '~codemirror/theme/material';
+
+@import './ng';
+@import './base';
+@import './animate';
+@import './theme';
+@import './button';
+@import './table';
+@import './variables';
+@import './directives';
+
+// Required for custom themes.
+@include mat.core();
+
+// Include the default theme styles.
+@include mat.all-component-themes($app-theme);
+
+// Register all themes.
+@each $name, $theme in $themes {
+  @include register-theme($name, $theme);
+}
+
+// Register all animates
+.headShake {
+  @include headShake();
+}
+
+.heartBeat {
+  @include heartBeat();
+}
+
+.flip {
+  @include flip();
+}
+
+.swing {
+  @include swing();
+}
+
+.rotate {
+  @include rotate();
+}
+
+.aggretation {
+  @include aggregation();
+}

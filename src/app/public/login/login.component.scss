@@ -1,0 +1,36 @@
+:host {
+  align-items: center;
+  background-color: #000;
+  background-image: url('https://static.bndy.net/images/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 100%;
+
+  el-lang-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .container {
+    margin: 0 auto;
+    padding: 0 2rem 3rem;
+    text-align: center;
+    width: 360px;
+
+    .mat-card-content {
+      margin-bottom: 0;
+      padding: 1rem 0;
+    }
+
+    .mat-card-actions {
+      margin-bottom: 0.5rem;
+    }
+
+    .mat-card-image {
+      margin-bottom: 0;
+      width: 50%;
+    }
+  }
+}

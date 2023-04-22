@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  padding-top: 20vh;
+
+  .container {
+    margin: 0 auto;
+    text-align: center;
+    width: 460px;
+
+    .mat-card-image {
+      width: 50%;
+    }
+  }
+}

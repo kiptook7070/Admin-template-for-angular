@@ -1,0 +1,112 @@
+@import '../../../styles/variables';
+
+:host {
+  .mat-toolbar-row {
+    nav {
+      &.main {
+        flex: 1;
+      }
+
+      &:last-child {
+        button {
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
+
+  ::ng-deep el-lang-menu + mat-menu + button {
+    margin-left: 0 !important;
+  }
+
+  ::ng-deep .mat-badge-content {
+    font-weight: normal;
+    right: -8px !important;
+    top: -8px !important;
+  }
+
+  .logo-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: calc(#{$sidebar-width} - 16px - 8px);
+
+    .logo {
+      width: 80%;
+    }
+  }
+
+  .spacer {
+    &.vertical {
+      background-color: rgba(0, 0, 0, 0.12);
+      height: 100%;
+      margin: 0 0.5rem;
+      width: 1px;
+    }
+  }
+
+  .btn-avatar {
+    ::ng-deep .mat-button-wrapper {
+      line-height: 0 !important;
+      position: relative;
+      top: -1px;
+    }
+  }
+}
+
+.search-container {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  margin-right: 0.5rem;
+  width: 360px;
+
+  input {
+    background-color: rgba($color: #fff, $alpha: 0.8);
+    border: none;
+    border-radius: 100px;
+    max-width: 240px;
+    outline: none;
+    padding: 0.5rem 1rem;
+    transition: width 0.4s ease-in-out;
+    width: 180px;
+
+    &:focus {
+      background-color: #fff;
+      width: 80%;
+    }
+  }
+}
+
+::ng-deep.theme-list {
+  .mat-menu-content {
+    display: flex;
+    padding: 0.5rem;
+
+    .mat-menu-item {
+      height: 50px;
+      padding: 0.5rem;
+      width: 50px;
+    }
+  }
+}
+
+.avatar-wrapper {
+  line-height: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  width: 260px;
+}
+
+::ng-deep.message-list {
+  max-height: 380px !important;
+
+  button {
+    &.new {
+      font-weight: bold;
+    }
+  }
+}
+
+

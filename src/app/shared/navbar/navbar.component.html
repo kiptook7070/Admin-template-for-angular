@@ -1,0 +1,69 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="logo-wrapper">
+      <img class="logo" src="assets/angular.png" />
+    </div>
+
+    <button mat-icon-button (click)="toggleSidebar()" *ngIf="false">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <nav id="mainNav" class="main">
+      <button mat-button *ngFor="let item of menus" (click)="goto(item)">{{item.text}}</button>
+    </nav>
+
+    <div class="search-container" *ngIf="searchEnabled">
+      <input id="searchInput" placeholder="{{'search'|translate}}" [(ngModel)]="searchKeywords" (keyup.enter)="onSearch()" />
+    </div>
+
+    <nav>
+      <button mat-icon-button [matBadge]="newMessageCount" [matBadgeHidden]="newMessageCount <= 0"
+        matBadgeColor="accent" [matMenuTriggerFor]="menuMessage" *ngIf="newMessageCount">
+        <mat-icon>message</mat-icon>
+      </button>
+      <mat-menu #menuMessage="matMenu" class="message-list scrollbar" [hidden]="!newMessageCount">
+        <button mat-menu-item *ngFor="let message of messages" [ngClass]="{'new': !message.read}"
+          [matTooltip]="message.title" (click)="viewMessage(message)">
+          <mat-icon>email</mat-icon>
+          <span>{{message.title}}</span>
+        </button>
+      </mat-menu>
+
+      <button mat-icon-button [matMenuTriggerFor]="menuTheme">
+        <mat-icon>palette</mat-icon>
+      </button>
+      <mat-menu class="theme-list" #menuTheme="matMenu" xPosition="before">
+        <button mat-menu-item *ngFor="let item of themes"
+          [matTooltip]="item.name" (click)="changeTheme(item.key)">
+          <el-theme-img class="{{item.key}}"></el-theme-img>
+        </button>
+      </mat-menu>
+
+      <el-lang-menu></el-lang-menu>
+
+      <button mat-icon-button class="btn-avatar" [matMenuTriggerFor]="menuAvatar" *ngIf="userInfo">
+        <el-avatar [url]="userInfo.avatar" [name]="userInfo.name"></el-avatar>
+      </button>
+      <mat-menu class="avatar-menus" #menuAvatar="matMenu" [hidden]="!userInfo">
+        <div class="avatar-wrapper">
+          <el-avatar [url]="userInfo.avatar" size="large" [name]="userInfo.name" *ngIf="userInfo"></el-avatar>
+          <div class="mat-typeography">
+            <div class="font-lg py-2">{{userInfo?.name}}</div>
+            <div class="text-muted">{{userInfo?.title}}</div>
+            <div class="text-muted" *ngIf="userRoles">{{userRoles.join(', ')}}</div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Your Profile</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_application</mat-icon>
+          <span>Sign Out</span>
+        </button>
+      </mat-menu>
+    </nav>
+
+  </mat-toolbar-row>
+</mat-toolbar>

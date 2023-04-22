@@ -1,0 +1,55 @@
+@import './variables';
+
+button {
+  &.loading {
+    &.mat-button,
+    &.mat-flat-button,
+    &.mat-raised-button,
+    &.mat-stroked-button {
+      .mat-button-wrapper {
+        color: transparent;
+      }
+
+      .mat-ripple {
+        &::before {
+          @include swing();
+          content: '● ● ●';
+          display: inline-block;
+        }
+      }
+    }
+
+
+    &.mat-fab,
+    &.mat-mini-fab,
+    &.mat-icon-button {
+      .mat-ripple {
+        @include rotate();
+        border: solid 1px;
+        border-bottom-color: rgba($color: #000, $alpha: 0.1);
+        border-left-color: rgba($color: #000, $alpha: 0.1);
+        border-right-color: rgba($color: #000, $alpha: 0.1);
+
+        &::before {
+          content: '';
+        }
+      }
+    }
+  }
+}
+
+@include each-themes using ($name, $theme) {
+  button {
+    &.loading {
+      &.mat-button-disabled {
+        &.mat-fab,
+        &.mat-mini-fab,
+        &.mat-icon-button {
+          .mat-ripple {
+            border-top-color: var(--#{$name}--primary);
+          }
+        }
+      }
+    }
+  }
+}

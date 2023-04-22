@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="login()" class="container">
+  <mat-card id="loginCard">
+    <el-lang-menu [viewTemplate]="langView"></el-lang-menu>
+    <ng-template #langView let-lang>
+      {{lang.label}}
+    </ng-template>
+    <img mat-card-image src="assets/logo.png">
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="name" name="username" placeholder="{{'username'|translate}}">
+        <mat-error *ngIf="form.get('name').hasError('required')">
+          {{'required'|translate}}
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="full-width">
+        <input matInput formControlName="password" name="password" placeholder="{{'password'|translate}}" type="password"
+          autocomplete="off">
+        <mat-error *ngIf="form.get('password').hasError('required')">
+          {{'required'|translate}}
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+
+    <div class="alert-message" *ngIf="alertMessage">{{alertMessage}}</div>
+
+    <mat-card-actions align="end">
+      <div class="flex-1" align="start">
+        <a mat-button>
+          {{'forgotPassword' | translate}}
+        </a>
+      </div>
+      <button mat-raised-button color="primary" [disabled]="!form.valid" [ngClass]="{loading: logging}" type="submit">
+        {{ 'signIn' | translate }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

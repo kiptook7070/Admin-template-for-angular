@@ -1,0 +1,29 @@
+@import '../../../styles/theme';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: $sidebar-width + 1;
+
+  .nav {
+    flex: 1;
+  }
+
+  footer {
+    font-size: 0.75rem;
+    opacity: 0.75;
+    padding: 0.5rem 0;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@include each-themes using ($name, $theme) {
+  :host {
+    footer {
+      background-color: get($name, 'background');
+      border-top: solid 1px get($name, 'divider');
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<mat-progress-bar mode="indeterminate" color="accent" *ngIf="showProgressbar"></mat-progress-bar>
+
+<el-navbar [menus]="menus" (menuClick)="clickNavMenu($event)" (search)="search($event)"></el-navbar>
+
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidebar [mode]="sidebarMode" opened>
+    <div class="py-4 absolute" align="center" *ngIf="menuLoading">
+      <mat-spinner strokeWidth="3" diameter="80"></mat-spinner>
+    </div>
+    <el-sidebar [menus]="subMenus"></el-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content class="scrollbar" [ngClass]="{'content-sidebar-opened': contentSidebarOpened}">
+    <span class="sidebar-switcher" (click)="toggleSidebar();">
+      <mat-icon *ngIf="sidebarOpened">keyboard_arrow_left</mat-icon>
+      <mat-icon *ngIf="!sidebarOpened">keyboard_arrow_right</mat-icon>
+    </span>
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

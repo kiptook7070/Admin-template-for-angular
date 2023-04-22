@@ -1,0 +1,42 @@
+:host {
+  display: inline-block;
+}
+
+.root {
+  align-items: center;
+  background-color: #efefef;
+  border-radius: 50%;
+  color: #666;
+  display: inline-flex;
+  height: 32px;
+  justify-content: center;
+  text-align: center;
+  width: 32px;
+
+  .name {
+    font-size: 20px;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+
+  &.small {
+    height: 1.5em;
+    width: 1.5em;
+
+    .name {
+      font-size: 1em;
+    }
+  }
+
+  &.large {
+    height: 6em;
+    width: 6em;
+
+    .name {
+      font-size: 3em;
+    }
+  }
+}
